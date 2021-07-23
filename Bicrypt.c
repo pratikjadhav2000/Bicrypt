@@ -73,17 +73,14 @@ printf("\nEnter a message to Encrypt\n" );
           binary_number[i] = binary_reverse [i] = '0';
 
 
-        int input = (int)char_input;
+        int input = char_input;
         int position = -1;
         //conversion to binary
         while ( input > 0 )
         {
           position++;
 
-          if( input % 2 == 0 )
-          binary_reverse[position] = '0';
-          else
-          binary_reverse[position] = '1';
+          binary_reverse[position] = ( input % 2 ) + '0';
 
           input /= 2;
           if ( (position + 1) == BINARYLENGTH )
@@ -132,11 +129,7 @@ printf("\nEnter a binary Decrypted message\n");
 
           for (int i = BINARYLENGTH - 1; i >=0 ; --i)
           {
-              if( binary_number[i] == '1' )
-              {
-                number += power;
-              }
-
+              number += power * ( binary_number[i] - '0' ) ;            
               power *= 2;
           }
           printf("%c",number );
